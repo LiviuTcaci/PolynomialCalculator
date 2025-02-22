@@ -1,0 +1,8 @@
+ui/PolynomialCalculatorUI.class
+model/Operation.class
+app/Main.class
+model/PolynomialOperations.class
+model/Polynomial.class
+controller/PolynomialController$1.class
+util/PolynomialParser.class
+controller/PolynomialController.class
