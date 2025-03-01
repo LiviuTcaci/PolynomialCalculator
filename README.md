@@ -1,73 +1,74 @@
 # Polynomial Calculator
-This repository contains the source code and documentation for Assignment 1 of the Fundamental Programming Techniques course. The Polynomial Calculator is a Java-based application designed to perform various operations on polynomials—including addition, subtraction, multiplication, derivation, and integration—via a user-friendly graphical interface built with Java Swing.
 
-## Overview
+A Java application that allows users to perform mathematical operations on polynomials through a graphical user interface. This calculator supports addition, subtraction, multiplication, derivation, and integration of polynomials.
 
-- **Assignment Objective:**  
-  Develop a tool to simplify polynomial operations that are typically complex and time-consuming when done manually.
+## Features
 
-- **Key Features:**  
-  - Input of polynomials in textual format.
-  - Support for multiple operations: addition, subtraction, multiplication, derivation, and integration.
-  - MVC architecture separating the model (polynomial operations), view (GUI), and controller (user action handler).
-  - Comprehensive error handling and result display in a simplified polynomial format.
-  - Unit testing using JUnit to ensure correctness of polynomial operations.
+- Input polynomials in standard format (e.g., 3x^2 + 2x - 5)
+- Perform basic operations:
+  - Addition
+  - Subtraction
+  - Multiplication
+- Calculate derivatives
+- Calculate integrals
+- User-friendly GUI with clear input fields and results display
 
-## Project Structure
-```
-.
-├── pom.xml
-├── src
-│   ├── main
-│   │   └── java
-│   │       ├── app
-│   │       │   └── Main.java
-│   │       ├── controller
-│   │       │   └── PolynomialController.java
-│   │       ├── model
-│   │       │   ├── Operation.java
-│   │       │   ├── Polynomial.java
-│   │       │   └── PolynomialOperations.java
-│   │       ├── ui
-│   │       │   └── PolynomialCalculatorUI.java
-│   │       └── util
-│   │           └── PolynomialParser.java
-│   └── test
-│       └── java
-│           └── PolynomialTest.java
-└── README.md
-```
+## Architecture
 
-## How to Run
+The application follows the Model-View-Controller (MVC) architecture:
 
-1. **Build the Project:**  
-   Use Maven to compile and package the application:
-   ```bash
-   mvn clean install
-   ```
+- **Model**: Represents polynomials and defines operations (`Polynomial`, `PolynomialOperations`, `Operation`)
+- **View**: Graphical user interface for interaction (`PolynomialCalculatorUI`)
+- **Controller**: Handles user actions and connects model with view (`PolynomialController`)
 
-	2.	Run the Application:
-Execute the main class from the target directory or within your IDE:
-`
-java -cp target/PT2024_30221_Tcaci_Liviu_Assignment_1-1.0-SNAPSHOT.jar app.Main
-`
+## Implementation Details
 
+### Polynomial Representation
 
-	4.	Using the Calculator:
-	
- •	Enter polynomials in the provided input fields.
-	
- •	Select the desired operation (Add, Subtract, Multiply, Derive, or Integrate) by clicking the corresponding button.
-	
- •	The result will be displayed in a text area in simplified polynomial format.
+Polynomials are represented using a `Map<Integer, Double>`, where:
+- The key is the exponent of a term
+- The value is the coefficient of that term
 
-Testing
+Example: 3x² + 2x - 5 is stored as {2:3.0, 1:2.0, 0:-5.0}
 
-Unit tests have been implemented with JUnit to validate all polynomial operations. To run the tests, execute:
-```
-mvn test
-```
+### Key Classes
 
-Documentation
+- **Polynomial**: Implements operations on polynomials (add, subtract, multiply, derive, integrate)
+- **PolynomialParser**: Converts string input into polynomial objects
+- **PolynomialCalculatorUI**: Manages the graphical interface using Java Swing
+- **PolynomialController**: Coordinates operations between UI and model
 
-For detailed information about the assignment objective, design, implementation, and testing results, please refer to the project documentation included in the repository.
+## How to Use
+
+1. Run the application (`Main.java`)
+2. Enter the first polynomial in the "Polynomial 1" field
+3. Enter the second polynomial in the "Polynomial 2" field (required only for addition, subtraction, and multiplication)
+4. Click the operation button you want to perform
+5. View the result in the display area
+
+### Input Format
+
+Polynomials should be entered in the standard format, examples:
+- `3x^2 + 2x - 5` (3x² + 2x - 5)
+- `x^3 - 4x` (x³ - 4x)
+- `5` (constant polynomial)
+
+## Testing
+
+The application includes comprehensive JUnit tests (`PolynomialTest.java`) that verify:
+- Polynomial addition
+- Polynomial subtraction
+- Polynomial multiplication
+- Derivation of polynomials
+- Integration of polynomials
+
+Tests cover both standard cases and edge cases with different polynomial forms.
+
+## Future Improvements
+
+Potential enhancements for the project:
+- Support for division of polynomials
+- Calculating polynomial roots
+- Handling of rational coefficients
+- Improved error handling and user feedback
+- Enhanced visualization of polynomial operations
